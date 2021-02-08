@@ -10,13 +10,30 @@ exports.createProduct = async (req, res) => {
 		res.status(400).send(err);
 	}
 };
-
+//GET /products?title=<value>
+//GET /products?limit=2&skip=2
+//GET /products?sortBy=createdAt:<value>  asc or desc
 exports.getProducts = async (req, res) => {
+	const sort = {};
+	const filter = {};
 	try {
-		const products = await Product.find({});
+		if (req.query.title) {
+			filter.title = req.query.title;
+		}
+		// console.log(req.query);
+
+		if (req.query.sortBy) {
+			const parts = req.query.sortBy.split(':');
+			sort[parts[0]] = parts[1];
+		}
+		const products = await Product.find(filter)
+			.limit(parseInt(req.query.limit))
+			.skip(parseInt(req.query.skip))
+			.sort(sort);
+
 		res.send(products);
 	} catch (err) {
-		res.status(500).send();
+		res.status(500).send(err);
 	}
 };
 
