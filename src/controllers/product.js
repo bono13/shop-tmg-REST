@@ -15,11 +15,13 @@ exports.createProduct = async (req, res) => {
 //GET /products?sortBy=createdAt:<value>  asc or desc
 exports.getProducts = async (req, res) => {
 	const sort = {};
-	const filter = {};
+	let filter = {};
+
+	if (req.query) {
+		filter = req.query;
+	}
+
 	try {
-		if (req.query.title) {
-			filter.title = req.query.title;
-		}
 		// console.log(req.query);
 
 		if (req.query.sortBy) {
