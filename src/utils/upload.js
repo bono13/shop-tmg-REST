@@ -1,6 +1,6 @@
 const Product = require('../models/product');
 
-const myProduct = async (req, res, next) => {
+const fetchProduct = async (req, res, next) => {
 	const _id = req.params.id;
 
 	// console.log(req.params.id);
@@ -19,4 +19,4 @@ const myProduct = async (req, res, next) => {
 	}
 };
 
-module.exports = myProduct;
+module.exports = fetchProduct;

@@ -1,14 +1,13 @@
 const express = require('express');
 const multer = require('multer');
-const sharp = require('sharp');
-const Product = require('../models/product');
+const passport = require('passport');
 
-const myProduct = require('../utils/upload');
-
-// const uploadControllers = require('../controllers/upload');
+const fetchProduct = require('../utils/upload');
+const uploadControllers = require('../controllers/upload');
 
 const router = new express.Router();
 
+//multer config
 const upload = multer({
 	limits: {
 		fileSize: 1000000,
@@ -24,44 +23,26 @@ const upload = multer({
 
 router.post(
 	'/upload/:id',
-	myProduct,
+	passport.authenticate('jwt', { session: false }),
+	fetchProduct,
 	upload.single('image'),
-	async (req, res) => {
-		const buffer = await sharp(req.file.buffer)
-			.resize({ width: 250, height: 250 })
-			.png()
-			.toBuffer();
-		req.product.image = buffer;
-
-		await req.product.save();
-
-		res.json('Upload Successful!');
-	},
+	uploadControllers.uploadImageById,
 	(error, req, res, next) => {
 		res.status(400).send({ error: error.message });
 	}
 );
 
-router.get('/upload/:id/image', async (req, res) => {
-	// console.log(req.params.id);
-	try {
-		const product = await Product.findById(req.params.id);
+router.get(
+	'/upload/:id/image',
+	passport.authenticate('jwt', { session: false }),
+	uploadControllers.getImageById
+);
 
-		if (!product || !product.image) {
-			throw new Error();
-		}
-
-		res.set('Content-Type', 'image/jpg');
-		res.send(product.image);
-	} catch (err) {
-		res.status(404).send();
-	}
-});
-
-router.delete('/upload/:id/image', myProduct, async (req, res) => {
-	req.product.image = undefined;
-	await req.product.save();
-	res.json('Image Deleted');
-});
+router.delete(
+	'/upload/:id/image',
+	passport.authenticate('jwt', { session: false }),
+	fetchProduct,
+	uploadControllers.deleteImageById
+);
 
 module.exports = router;

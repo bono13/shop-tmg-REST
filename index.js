@@ -27,7 +27,7 @@ app.use(userRouter);
 app.use(productRouter);
 app.use(uploadRouter);
 
-//DB connection
+//DATABASE
 mongoose.connect(
 	process.env.MONGODB_URI,
 	{
