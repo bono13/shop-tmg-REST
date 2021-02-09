@@ -60,7 +60,7 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
 	const updates = Object.keys(req.body);
-	const allowedUpdates = ['title', 'price', 'description', 'SKU'];
+	const allowedUpdates = ['title', 'price', 'description'];
 	const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
 	if (!isValidOperation) {
