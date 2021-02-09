@@ -11,7 +11,7 @@ const userRouter = require('./src/routers/user');
 const uploadRouter = require('./src/routers/upload');
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 //PASSPORT CONFIG
 require('./src/utils/passport-config');

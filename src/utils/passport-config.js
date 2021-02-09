@@ -39,7 +39,7 @@ passport.use(
 		{
 			jwtFromRequest: cookieFromExtractor,
 			passReqToCallback: true,
-			secretOrKey: 'keyboard cat', // maybe wanna use environment variables here
+			secretOrKey: `${process.env.JWT_SECRET}`, // maybe wanna use environment variables here
 		},
 		(req, payload, done) => {
 			// console.log(payload.sub)
