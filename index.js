@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
+const helmet = require('helmet');
 
 //MODULES
 const productRouter = require('./src/routers/product');
@@ -17,6 +18,7 @@ const port = process.env.PORT || 3000;
 require('./src/utils/passport-config');
 
 // MIDDLEWARE
+app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(passport.initialize());
