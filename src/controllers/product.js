@@ -17,17 +17,19 @@ exports.getProducts = async (req, res) => {
 	const sort = {};
 	let filter = {};
 
-	if (req.query) {
-		filter = req.query;
-	}
-
 	try {
-		// console.log(req.query);
-
 		if (req.query.sortBy) {
 			const parts = req.query.sortBy.split(':');
 			sort[parts[0]] = parts[1];
+		} else if (req.query.limit || req.query.skip) {
+			queryLimit = req.query.limit;
+			querySkip = req.query.skip;
+		} else {
+			filter = req.query;
 		}
+
+		// console.log(filter);
+
 		const products = await Product.find(filter)
 			.limit(parseInt(req.query.limit))
 			.skip(parseInt(req.query.skip))
@@ -57,7 +59,7 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
 	const updates = Object.keys(req.body);
-	const allowedUpdates = ['title', 'imageUrl', 'price', 'description', 'SKU'];
+	const allowedUpdates = ['title', 'price', 'description', 'SKU'];
 	const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
 	if (!isValidOperation) {
