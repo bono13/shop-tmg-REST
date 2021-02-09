@@ -6,7 +6,7 @@ const productSchema = new Schema(
 	{
 		index: {
 			type: Number,
-			required: true,
+			default: 0,
 		},
 		title: {
 			type: String,
@@ -31,6 +31,11 @@ const productSchema = new Schema(
 	},
 	{
 		timestamps: true,
+		toJSON: {
+			transform(doc, ret) {
+				delete ret.index;
+			},
+		},
 	}
 );
 

@@ -2,7 +2,7 @@ const Product = require('../models/product');
 
 exports.createProduct = async (req, res) => {
 	// const product = new Product(req.body);
-	const product = new Product({ ...req.body, index: await Product.count() });
+	const product = new Product({ ...req.body, index: await Product.countDocuments() });
 
 	try {
 		await product.save();
