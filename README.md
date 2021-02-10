@@ -7,7 +7,8 @@
 - All **POST, GET, PATCH , DELETE** requests must be sent to the following domain:
 - https://tmg-rest-api.herokuapp.com
 
-- **Note**: The Insomnia *_.url* environment workspace variable shown in the screenshots is set to "https://tmg-rest-api.herokuapp.com"
+- **Note**: The Insomnia *_.url* environment workspace variable shown in the screenshots 
+   is set to "https://tmg-rest-api.herokuapp.com"
 
 ##  How to use 
 
