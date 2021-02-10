@@ -67,12 +67,16 @@
   
 - Examples of Pagination:
 
+
 - using */products?limit=2* will give us:
+
 [![pagination-limit.png](https://i.postimg.cc/vTtGYg6R/pagination-limit.png)](https://postimg.cc/PvJgKq4K)
 
 
 - using */products?limit=2&skip=2* will give us:
+
 [![pagination-limit-skip.png](https://i.postimg.cc/3R6KfQ56/pagination-limit-skip.png)](https://postimg.cc/0MYRr3Nd)
+
 
 Notice how the SKU field of the documents displayed using */products?limit=2* and */products?limit=2&skip=2* are different.
 
