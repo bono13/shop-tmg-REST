@@ -97,7 +97,7 @@ Example:
   
 [![get-image.png](https://i.postimg.cc/2yGfpsPr/get-image.png)](https://postimg.cc/CnR2kQhQ)
   
--**Delete** an image by sending a **DELETE** request to */upload/(id)/image* where "(id)" should be substituted by the mongo _id 
+- **Delete** an image by sending a **DELETE** request to */upload/(id)/image* where "(id)" should be substituted by the mongo _id 
   of the product you want to delete the image from
 
 
