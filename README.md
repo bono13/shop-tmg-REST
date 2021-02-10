@@ -49,16 +49,16 @@
 
 - **Filter** Products using:  */products?(field)=(value)* where "(field)" is substituted for any one of the fields specified above
   
- - For example below we use "/products?title=Adidas TrackSuit Black Ice" and get back the following Document: 
+ - For example below we use */products?title=Adidas TrackSuit Black Ice* and get back the following Document: 
  
- [![fetch-with-param.png](https://i.postimg.cc/7641CdQF/fetch-with-param.png)](https://postimg.cc/v1Pxkqyh)
+[![fetch-with-param.png](https://i.postimg.cc/7641CdQF/fetch-with-param.png)](https://postimg.cc/v1Pxkqyh)
   
 - **Sort** Products using:  */products?sortBy=(field):asc* or */products?sortBy=(field):desc* 
   where *asc* sorts in ascending fashion and *desc* in a descending fashion e.g:
   
-  *products?sortBy=createdAt:desc* brings back the collections by date of creation in a descending manner, notice the SKU numeration:
+*products?sortBy=createdAt:desc* brings back the collections by date of creation in a descending manner, notice the SKU numeration:
   
-  [![sort-created-At-desc.png](https://i.postimg.cc/MG2V4gxn/sort-created-At-desc.png)](https://postimg.cc/yDjD3QDK)
+[![sort-created-At-desc.png](https://i.postimg.cc/MG2V4gxn/sort-created-At-desc.png)](https://postimg.cc/yDjD3QDK)
   
 - For **Pagination** use:  */products?limit=(num_value)* or */products?limit=(num_value)&skip=(num_value)*
 
@@ -68,7 +68,6 @@
 - Examples of Pagination:
 
 - using */products?limit=2* will give us:
-
 [![pagination-limit.png](https://i.postimg.cc/vTtGYg6R/pagination-limit.png)](https://postimg.cc/PvJgKq4K)
 
 
@@ -84,17 +83,17 @@ Notice how the SKU field of the documents displayed using */products?limit=2* an
 - **Upload** image: send a **POST** request to */upload/(id)* where "(id)" should be substituted by the mongo _id of the product to which the image will be 
   uploaded to 
   
-  Example: 
+Example: 
   
-  [![upload-image.png](https://i.postimg.cc/TP5GyHWJ/upload-image.png)](https://postimg.cc/B83Rkppj)
+[![upload-image.png](https://i.postimg.cc/TP5GyHWJ/upload-image.png)](https://postimg.cc/B83Rkppj)
   
-  - **Render** Image: send a **GET** request to */upload/(id)/image* where "(id)" should be substituted by the mongo _id of the product you want to render the        image from.
+- **Render** Image: send a **GET** request to */upload/(id)/image* where "(id)" should be substituted by the mongo _id of the product you want to render the        image from.
   
-  Example:
+Example:
   
-  [![get-image.png](https://i.postimg.cc/2yGfpsPr/get-image.png)](https://postimg.cc/CnR2kQhQ)
+[![get-image.png](https://i.postimg.cc/2yGfpsPr/get-image.png)](https://postimg.cc/CnR2kQhQ)
   
-  -**Delete** an image by sending a **DELETE** request to */upload/(id)/image* where "(id)" should be substituted by the mongo _id 
+-**Delete** an image by sending a **DELETE** request to */upload/(id)/image* where "(id)" should be substituted by the mongo _id 
   of the product you want to delete the image from
 
 
