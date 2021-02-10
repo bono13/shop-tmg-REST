@@ -67,6 +67,25 @@
 
 Notice how the SKU field of the documents displayed using /products?limit=2 and /products?limit=2&skip=2 are different.
 
+### Uploading , Rendering and Deleting Images
+
+- Supported image formats: jpeg,jpg and png
+
+- Upload image: send a POST request to /upload/<value> where <value> should be substituted by the mongo _id of the product to which the image will be 
+  uploaded to 
+  
+  Example: 
+  
+  (upload image)
+  
+  - Render Image: send a GET request to /upload/<value>/image where <value> should be substituted by the mongo _id of the product you want to render the image       from
+  
+  Example:
+  (swedish_sweater)
+  
+  -Delete an image by sending a DELETE request to /upload/<value>/image where <value> should be substituted by the mongo _id of the product you want to delete the    image from
+
+
 
 
 
