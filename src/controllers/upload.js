@@ -6,7 +6,6 @@ exports.uploadImageById = async (req, res) => {
 	req.product.image = buffer;
 
 	await req.product.save();
-
 	res.json('Upload Successful!');
 };
 
